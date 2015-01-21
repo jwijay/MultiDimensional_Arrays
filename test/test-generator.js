@@ -45,25 +45,36 @@ describe('MultiDimensionalArray', function() {
       expect(mda.generate_2d).to.be.instanceof(Function);
     });
 
-    describe("calling with no arguments", function() {
-      it("should return array (length 3) of arrays (each length 3) containing random bool values", function() {
-        var result = mda.generate_2d();
+    it("empty args case: should return array (length 3) of arrays (each length 3) containing random bool values", function() {
+      var result = mda.generate_2d();
 
-        expect(result).should.have.length(3);
+      expect(result).should.have.length(3);
 
-        result.forEach(function(array) {
-          expect(array).to.be.instanceof(Array);
-          array.should.have.length(3);
+      result.forEach(function(array) {
+        expect(array).to.be.instanceof(Array);
+        array.should.have.length(3);
 
-          array.forEach(function(value) {
-            expect(value).to.be.a('boolean');
-          });
+        array.forEach(function(value) {
+          expect(value).to.be.a('boolean');
         });
       });
     });
 
-    
-    
+    it("one arg case: should return array (length 4) of arrays (each length 3) containing random bool values", function() {
+      var result = mda.generate_2d(4);
+
+      expect(result).should.have.length(4);
+
+      result.forEach(function(array) {
+        expect(array).to.be.instanceof(Array);
+        array.should.have.length(3);
+
+        array.forEach(function(value) {
+          expect(value).to.be.a('boolean');
+        });
+      });
+    });
+
   }); //desc generate_2d
 
 }); //desc MultiDim(blahblah)

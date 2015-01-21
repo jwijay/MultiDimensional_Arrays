@@ -75,6 +75,23 @@ describe('MultiDimensionalArray', function() {
       });
     });
 
+    it("two args case: should return array (length 5) of arrays (each length 4) containing random bool values", function() {
+      var result = mda.generate_2d(5,4);
+
+      expect(result).should.have.length(5);
+
+      result.forEach(function(array) {
+        expect(array).to.be.instanceof(Array);
+        array.should.have.length(4);
+
+        array.forEach(function(value) {
+          expect(value).to.be.a('boolean');
+        });
+      });
+    });
+
+
+
   }); //desc generate_2d
 
 }); //desc MultiDim(blahblah)

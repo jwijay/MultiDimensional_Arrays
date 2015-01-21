@@ -34,7 +34,23 @@ module.exports = {
     }    
     return result;
   },
-  generate_3d : function (tier1, tier2, tier3) {
 
+  generate_3d : function (tier1, tier2, tier3) {
+    var result = [];
+
+    if (tier1 === undefined && tier2 === undefined && tier3 === undefined) {
+      tier1 = 3;
+      tier2 = 3;
+      tier3 = 3;
+    } else if (tier1 === undefined && tier2 === undefined){
+      tier1 = 3;
+      tier2 = 3;
+    } else if (tier2 === undefined) {
+      tier2 = 3;
+    } 
+    for (var i = 0; i < tier1; i++) {
+      result.push(this.generate_2d(tier2, tier3));
+    }    
+    return result;
   }
 };

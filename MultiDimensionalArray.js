@@ -7,7 +7,7 @@ module.exports = {
   generate_1d : function (numElements) {
     //generate_1d will create new array (to be returned)
     var result = [];
-    
+
     //if no arg is passed in, returns array w/ 3 random bools
     if (numElements === undefined) {
       numElements = 3;
@@ -18,8 +18,21 @@ module.exports = {
     return result;
   },
 
+  //generate_2d takes up to 2 args
   generate_2d : function (tier1, tier2) {
+    var result = [];
 
+    //no args case: return [[3 rando bools],[3 rando bools], [3 rando bools]]
+    if(tier1 === undefined && tier2 === undefined){
+      tier1 = 3;
+      tier2 = 3;
+    } else if (tier2 === undefined) {
+      tier2 = 3;
+    } 
+    for (var i = 0; i < tier1; i++) {
+      result.push(this.generate_1d(tier2));
+    }    
+    return result;
   },
   generate_3d : function (tier1, tier2, tier3) {
 

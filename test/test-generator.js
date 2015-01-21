@@ -51,7 +51,7 @@ describe('MultiDimensionalArray', function() {
       var result = mda.generate_2d();
 
       expect(result).to.be.instanceof(Array);
-      expect(result).should.have.length(3);
+      result.should.have.length(3);
 
       result.forEach(function(array) {
         expect(array).to.be.instanceof(Array);
@@ -67,7 +67,7 @@ describe('MultiDimensionalArray', function() {
       var result = mda.generate_2d(4);
 
       expect(result).to.be.instanceof(Array);
-      expect(result).should.have.length(4);
+      result.should.have.length(4);
 
       result.forEach(function(array) {
         expect(array).to.be.instanceof(Array);
@@ -83,7 +83,7 @@ describe('MultiDimensionalArray', function() {
       var result = mda.generate_2d(5,4);
 
       expect(result).to.be.instanceof(Array);
-      expect(result).should.have.length(5);
+      result.should.have.length(5);
 
       result.forEach(function(array) {
         expect(array).to.be.instanceof(Array);
@@ -108,17 +108,17 @@ describe('MultiDimensionalArray', function() {
       var result = mda.generate_3d(3,4,5);
 
       expect(result).to.be.instanceof(Array);
-      expect(result).should.have.length(3);
+      result.should.have.length(3);
 
       result.forEach(function(second_dimension) {
         expect(second_dimension).to.be.instanceof(Array);
         second_dimension.should.have.length(4);
 
-        second_dimension.forEach(function(first_dimension) {
+        second_dimension.forEach(function(third_dimension) {
 
-          first_dimension.should.have.length(5);
+          third_dimension.should.have.length(5);
 
-          first_dimension.forEach(function(value) {
+          third_dimension.forEach(function(value) {
             expect(value).to.be.a('boolean');
           });
 

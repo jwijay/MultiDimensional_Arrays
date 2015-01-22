@@ -52,5 +52,24 @@ module.exports = {
       result.push(this.generate_2d(tier2, tier3));
     }    
     return result;
+  },
+
+  flattenAndKeepTrues : function (array, result) {
+      for (var i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+          result = this.flattenAndKeepTrues(array[i], result);
+        } else {
+          if (array[i] === true) {
+            result = result.concat(array[i]);
+          }
+        }
+      }
+    
+    return result;
+  },
+
+  count : function (array) {
+    return this.flattenAndKeepTrues(array, []).length;
   }
+
 };

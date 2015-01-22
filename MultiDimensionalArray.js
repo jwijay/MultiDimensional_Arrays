@@ -1,6 +1,8 @@
 module.exports = {
   generate_randoBool : function () {
-    return (Math.random() < 0.5);
+    var num_between_0_and_1 = Math.random();
+    var HALFSIES = 0.5;
+    return (num_between_0_and_1 < HALFSIES);
   },
 
   generate: function (numDimensions, length) {
@@ -18,12 +20,12 @@ module.exports = {
     }
   },
 
-  flattenAndKeepTrues : function (array, result) {
+  flattenAndKeepValue : function (array, value, result) {
       for (var i = 0; i < array.length; i++) {
         if (Array.isArray(array[i])) {
-          result = this.flattenAndKeepTrues(array[i], result);
+          result = this.flattenAndKeepValue(array[i], result);
         } else {
-          if (array[i] === true) {
+          if (array[i] === value) {
             result = result.concat(array[i]);
           }
         }
@@ -32,8 +34,8 @@ module.exports = {
     return result;
   },
 
-  count : function (array) {
-    return this.flattenAndKeepTrues(array, []).length;
+  count : function (array, value) {
+    return this.flattenAndKeepValue(array, value, []).length;
   }
 
 };

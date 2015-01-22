@@ -23,7 +23,7 @@ module.exports = {
   flattenAndKeepValue : function (array, value, result) {
       for (var i = 0; i < array.length; i++) {
         if (Array.isArray(array[i])) {
-          result = this.flattenAndKeepValue(array[i], result);
+          result = this.flattenAndKeepValue(array[i], value, result);
         } else {
           if (array[i] === value) {
             result = result.concat(array[i]);
@@ -35,6 +35,9 @@ module.exports = {
   },
 
   count : function (array, value) {
+    if (value === undefined) {
+      value = true;
+    }
     return this.flattenAndKeepValue(array, value, []).length;
   }
 
